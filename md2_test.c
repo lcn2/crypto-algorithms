@@ -32,20 +32,20 @@ int md2_test()
 	int pass = 1;
 
 	md2_init(&ctx);
-	md2_update(&ctx, text1, strlen(text1));
+	md2_update(&ctx, text1, strlen((const char *)text1));
 	md2_final(&ctx, buf);
 	pass = pass && !memcmp(hash1, buf, MD2_BLOCK_SIZE);
 
 	// Note that the MD2 object can be re-used.
 	md2_init(&ctx);
-	md2_update(&ctx, text2, strlen(text2));
+	md2_update(&ctx, text2, strlen((const char *)text2));
 	md2_final(&ctx, buf);
 	pass = pass && !memcmp(hash2, buf, MD2_BLOCK_SIZE);
 
 	// Note that the data is added in two chunks.
 	md2_init(&ctx);
-	md2_update(&ctx, text3_1, strlen(text3_1));
-	md2_update(&ctx, text3_2, strlen(text3_2));
+	md2_update(&ctx, text3_1, strlen((const char *)text3_1));
+	md2_update(&ctx, text3_2, strlen((const char *)text3_2));
 	md2_final(&ctx, buf);
 	pass = pass && !memcmp(hash3, buf, MD2_BLOCK_SIZE);
 

@@ -32,18 +32,18 @@ int sha1_test()
 	int pass = 1;
 
 	sha1_init(&ctx);
-	sha1_update(&ctx, text1, strlen(text1));
+	sha1_update(&ctx, text1, strlen((const char *)text1));
 	sha1_final(&ctx, buf);
 	pass = pass && !memcmp(hash1, buf, SHA1_BLOCK_SIZE);
 
 	sha1_init(&ctx);
-	sha1_update(&ctx, text2, strlen(text2));
+	sha1_update(&ctx, text2, strlen((const char *)text2));
 	sha1_final(&ctx, buf);
 	pass = pass && !memcmp(hash2, buf, SHA1_BLOCK_SIZE);
 
 	sha1_init(&ctx);
 	for (idx = 0; idx < 100000; ++idx)
-	   sha1_update(&ctx, text3, strlen(text3));
+	   sha1_update(&ctx, text3, strlen((const char *)text3));
 	sha1_final(&ctx, buf);
 	pass = pass && !memcmp(hash3, buf, SHA1_BLOCK_SIZE);
 

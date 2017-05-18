@@ -17,6 +17,8 @@
 #include <memory.h>
 #include "aes.h"
 
+extern int aes_decrypt_cbc(const BYTE in[], size_t in_len, BYTE out[], const WORD key[], int keysize, const BYTE iv[]);
+
 /*********************** FUNCTION DEFINITIONS ***********************/
 void print_hex(BYTE str[], int len)
 {

@@ -32,20 +32,20 @@ int md5_test()
 	int pass = 1;
 
 	md5_init(&ctx);
-	md5_update(&ctx, text1, strlen(text1));
+	md5_update(&ctx, text1, strlen((const char *)text1));
 	md5_final(&ctx, buf);
 	pass = pass && !memcmp(hash1, buf, MD5_BLOCK_SIZE);
 
 	// Note the MD5 object can be reused.
 	md5_init(&ctx);
-	md5_update(&ctx, text2, strlen(text2));
+	md5_update(&ctx, text2, strlen((const char *)text2));
 	md5_final(&ctx, buf);
 	pass = pass && !memcmp(hash2, buf, MD5_BLOCK_SIZE);
 
 	// Note the data is being added in two chunks.
 	md5_init(&ctx);
-	md5_update(&ctx, text3_1, strlen(text3_1));
-	md5_update(&ctx, text3_2, strlen(text3_2));
+	md5_update(&ctx, text3_1, strlen((const char *)text3_1));
+	md5_update(&ctx, text3_2, strlen((const char *)text3_2));
 	md5_final(&ctx, buf);
 	pass = pass && !memcmp(hash3, buf, MD5_BLOCK_SIZE);
 
