@@ -134,10 +134,11 @@ test: ${TEST_TARGETS}
 configure:
 	@echo nothing to configure
 
-clean quick_clean quick_distclean distclean:
+clean quick_clean:
 	rm -f *.o
 
-clobber quick_clobber: clean
+clobber quick_clobber quick_distclean distclean:
+	rm -f *.o
 	rm -f ${TARGETS}
 
 install: all
