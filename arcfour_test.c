@@ -19,7 +19,7 @@
 /*********************** FUNCTION DEFINITIONS ***********************/
 int rc4_test()
 {
-	BYTE state[256];
+	BYTE state[256+2];
 	BYTE key[3][10] = {{"Key"}, {"Wiki"}, {"Secret"}};
 	BYTE stream[3][10] = {{0xEB,0x9F,0x77,0x81,0xB7,0x34,0xCA,0x72,0xA7,0x19},
 	                      {0x60,0x44,0xdb,0x6d,0x41,0xb7},

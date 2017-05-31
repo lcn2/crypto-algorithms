@@ -31,4 +31,11 @@ void arcfour_key_setup(BYTE state[], const BYTE key[], int len);
 //        len - number of bytes to generate
 void arcfour_generate_stream(BYTE state[], BYTE out[], size_t len);
 
+#if !defined(ARCFOUR_I)
+# define ARCFOUR_I (256)
+#endif
+#if !defined(ARCFOUR_J)
+# define ARCFOUR_J (257)
+#endif
+
 #endif   // ARCFOUR_H
