@@ -15,6 +15,7 @@
 /*************************** HEADER FILES ***************************/
 #include <stdio.h>
 #include <memory.h>
+#include <stdlib.h>
 #include "aes.h"
 
 extern int aes_decrypt_cbc(const BYTE in[], size_t in_len, BYTE out[], const WORD key[], int keysize, const BYTE iv[]);
@@ -281,7 +282,10 @@ int aes_test()
 
 int main(int argc, char *argv[])
 {
-	printf("AES Tests: %s\n", aes_test() ? "SUCCEEDED" : "FAILED");
+	int ret;	// 0 ==> test failed, != 0 ==> test suceeded
 
-	return(0);
+	ret = aes_test();
+	printf("AES Tests: %s\n", ret ? "SUCCEEDED" : "FAILED");
+
+	exit(ret == 0 ? 1 : 0);
 }

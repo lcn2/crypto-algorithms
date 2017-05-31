@@ -114,10 +114,22 @@ sha256_test.o: sha256_test.c sha256.h
 	${CC} ${CFLAGS} sha256_test.c -c
 
 test: ${TEST_TARGETS}
-	@-for i in ${TEST_TARGETS}; do \
+	@export last_error="0"; \
+	  for i in ${TEST_TARGETS}; do \
 	    echo running '=-=' $$i '=-='; \
 	    ./$$i; \
-	done
+	    status="$$?"; \
+	    if [ "$$status" != 0 ]; then \
+		echo "WARNING: test $$i failed!!"; \
+		last_error="$$status"; \
+	    fi; \
+	done; \
+	if [ "$$last_error" = 0 ]; then \
+	    echo "=-=-= All tests PASSED =-=-="; \
+	else \
+	    echo "=-=-= Some tests FAILED =-=-="; \
+	fi; \
+	exit "$$last_error"
 
 configure:
 	@echo nothing to configure

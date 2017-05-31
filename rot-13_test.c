@@ -14,6 +14,7 @@
 /*************************** HEADER FILES ***************************/
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "rot-13.h"
 
 /*********************** FUNCTION DEFINITIONS ***********************/
@@ -38,7 +39,10 @@ int rot13_test()
 
 int main()
 {
-	printf("ROT-13 tests: %s\n", rot13_test() ? "SUCCEEDED" : "FAILED");
+	int ret;	// 0 ==> test failed, != 0 ==> test suceeded
 
-	return(0);
+	ret = rot13_test();
+	printf("ROT-13 Tests: %s\n", ret ? "SUCCEEDED" : "FAILED");
+
+	exit(ret == 0 ? 1 : 0);
 }

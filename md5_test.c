@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <memory.h>
 #include <string.h>
+#include <stdlib.h>
 #include "md5.h"
 
 /*********************** FUNCTION DEFINITIONS ***********************/
@@ -54,7 +55,10 @@ int md5_test()
 
 int main()
 {
-	printf("MD5 tests: %s\n", md5_test() ? "SUCCEEDED" : "FAILED");
+	int ret;	// 0 ==> test failed, != 0 ==> test suceeded
 
-	return(0);
+	ret = md5_test();
+	printf("MD5 Tests: %s\n", ret ? "SUCCEEDED" : "FAILED");
+
+	exit(ret == 0 ? 1 : 0);
 }

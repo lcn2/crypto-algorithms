@@ -14,6 +14,7 @@
 /*************************** HEADER FILES ***************************/
 #include <stdio.h>
 #include <memory.h>
+#include <stdlib.h>
 #include "base64.h"
 
 /*********************** FUNCTION DEFINITIONS ***********************/
@@ -48,7 +49,10 @@ int base64_test()
 
 int main()
 {
-	printf("Base64 tests: %s\n", base64_test() ? "PASSED" : "FAILED");
+	int ret;	// 0 ==> test failed, != 0 ==> test suceeded
 
-	return 0;
+	ret = base64_test();
+	printf("Base64 Tests: %s\n", ret ? "SUCCEEDED" : "FAILED");
+
+	exit(ret == 0 ? 1 : 0);
 }

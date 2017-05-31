@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <memory.h>
+#include <stdlib.h>
 #include "md2.h"
 
 /*********************** FUNCTION DEFINITIONS ***********************/
@@ -54,5 +55,10 @@ int md2_test()
 
 int main()
 {
-	printf("MD2 tests: %s\n", md2_test() ? "SUCCEEDED" : "FAILED");
+	int ret;	// 0 ==> test failed, != 0 ==> test suceeded
+
+	ret = md2_test();
+	printf("MD2 Tests: %s\n", ret ? "SUCCEEDED" : "FAILED");
+
+	exit(ret == 0 ? 1 : 0);
 }

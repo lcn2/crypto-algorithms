@@ -14,6 +14,7 @@
 /*************************** HEADER FILES ***************************/
 #include <stdio.h>
 #include <memory.h>
+#include <stdlib.h>
 #include "arcfour.h"
 
 /*********************** FUNCTION DEFINITIONS ***********************/
@@ -41,7 +42,10 @@ int rc4_test()
 
 int main()
 {
-	printf("ARCFOUR tests: %s\n", rc4_test() ? "SUCCEEDED" : "FAILED");
+	int ret;	// 0 ==> test failed, != 0 ==> test suceeded
 
-	return(0);
+	ret = rc4_test();
+	printf("ARCFOUR Tests: %s\n", ret ? "SUCCEEDED" : "FAILED");
+
+	exit(ret == 0 ? 1 : 0);
 }
