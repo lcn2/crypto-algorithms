@@ -32,6 +32,7 @@ int base64_test()
 	int idx;
 
 	for (idx = 0; idx < 3; idx++) {
+		memset(buf, 0, sizeof(buf));
 		buf_len = base64_encode(text[idx], buf, strlen((const char *)text[idx]), 1);
 		pass = pass && ((buf_len == strlen((const char *)code[idx])) &&
 		                 (buf_len == base64_encode(text[idx], NULL, strlen((const char *)text[idx]), 1)));
