@@ -33,5 +33,6 @@ typedef struct {
 void md2_init(MD2_CTX *ctx);
 void md2_update(MD2_CTX *ctx, const BYTE data[], size_t len);
 void md2_final(MD2_CTX *ctx, BYTE hash[]);   // size of hash must be MD2_BLOCK_SIZE
+void md2(BYTE hash[], BYTE data[], size_t len);
 
 #endif   // MD2_H
