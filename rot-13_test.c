@@ -24,15 +24,18 @@ int rot13_test()
 	char code[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
 	char buf[1024];
 	int pass = 1;
+	size_t len;
 
 	// To encode, just apply ROT-13.
-	strcpy(buf, text);
-	rot13(buf);
-	pass = pass && !strcmp(code, buf);
+	memset(buf, 0, sizeof(buf));
+	len = sizeof(text);
+	memcpy(buf, text, len);
+	rot13((BYTE *)buf, len);
+	pass = pass && (memcmp(code, buf, len) == 0);
 
 	// To decode, just re-apply ROT-13.
-	rot13(buf);
-	pass = pass && !strcmp(text, buf);
+	rot13((BYTE *)buf, len);
+	pass = pass && (memcmp(text, buf, len) == 0);
 
 	return(pass);
 }
