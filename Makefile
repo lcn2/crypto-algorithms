@@ -18,7 +18,8 @@ CFLAGS= -O3 -g3 -std=c99 -Wall -pedantic
 INSTALL= install
 DESTDIR= /usr/global/bin
 
-TEST_TARGETS= aes_test arcfour_test base64_test blowfish_test des_test md2_test md5_test rot-13_test sha1_test sha256_test
+TEST_TARGETS= aes_test arcfour_test base64_test blowfish_test des_test md2_test md5_test rot-13_test sha1_test sha256_test \
+	speck128128_test
 TARGETS= ${TEST_TARGETS}
 
 all: ${TARGETS}
@@ -112,6 +113,15 @@ sha256.o: sha256.c sha256.h
 
 sha256_test.o: sha256_test.c sha256.h
 	${CC} ${CFLAGS} sha256_test.c -c
+
+speck128128_test: speck128128_test.o speck128128.o
+	${CC} ${CFLAGS} speck128128_test.o speck128128.o -o speck128128_test
+
+speck128128_test.o: speck128128_test.c speck128128.h
+	${CC} ${CFLAGS} speck128128_test.c -c
+
+speck128128.o: speck128128.c speck128128.h
+	${CC} ${CFLAGS} speck128128.c -c
 
 test: ${TEST_TARGETS}
 	@export last_error="0"; \

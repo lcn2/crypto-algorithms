@@ -8,3 +8,4 @@ md5_test
 rot-13_test
 sha1_test
 sha256_test
+speck128128_test
